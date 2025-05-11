@@ -1,1 +1,1 @@
-# SENSE-SEnsing-Similarity-SEeing-Structure
+# SENSE: SEnsing Similarity SEeing Structure
