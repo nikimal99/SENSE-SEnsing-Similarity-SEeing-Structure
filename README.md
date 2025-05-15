@@ -12,6 +12,7 @@ Clone the repository and install the required dependencies, using conda:
 ```bash
 conda env create -f environment.yml
 conda activate sense-env
+```
 
 ## 📁 Repository Structure
 
