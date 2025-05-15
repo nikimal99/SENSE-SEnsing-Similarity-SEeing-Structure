@@ -6,7 +6,7 @@
 
 ## 📦 Setup
 
-Clone the repository and install the required dependencies, Using conda:
+Clone the repository and install the required dependencies, using conda:
 
 
 ```bash
@@ -15,7 +15,7 @@ conda activate sense-env
 
 ## 📁 Repository Structure
 
-sense-framework/
+SENSE: SEnsing Similarity, SEeing Structure/
 │
 ├── create_dataset_sense.py # Dataset preprocessing and Dirichlet partitioning
 ├── Pointwise_Full.py # SENSE configuration: Pointwise Full
@@ -25,22 +25,14 @@ sense-framework/
 ├── README.md # Project overview and usage
 └── environment.yml # Conda environment with dependencies
 
-SENSE Configurations
-Each .py file represents a distinct decentralized setting:
-
-Pointwise_Full.py: Full access to global anchors by all clients
-
-Multisite_Full.py: Each site has full local anchors; no inter-client knowledge
-
-Multisite_Partial.py: Partial overlap of anchors between clients
+##SENSE Configurations
+Each .py file represents a distinct decentralized setting.
 
 ## Running the Full Pipeline
 To run all configurations across multiple datasets and partition settings, use the bash script:
 ./bash_sense.sh
 
-The script:
-
-Iterates over all datasets, applies IID, Balanced, and Unbalanced partitioning, runs all SENSE configurations and saves results in a structured directory:
+The script iterates over all datasets, applies IID, Balanced, and Unbalanced partitioning, runs all SENSE configurations and saves results in a structured directory:
 results/<dataset>/<partition_type>/<config>/output.txt
 
 Example output path:
@@ -48,7 +40,7 @@ results/RetinaMNIST/balanced/pointwise_full/output.txt
 
 You can modify bash_sense.sh to include or exclude specific datasets or configurations.
 
-Dataset Preparation
+##Dataset Preparation
 The script create_dataset_sense.py prepares the dataset and splits it across clients:
 
 IID: Uniform random splitting
@@ -57,7 +49,7 @@ Non-IID Balanced: Dirichlet partitioning with balanced client sizes
 
 Non-IID Unbalanced: Dirichlet partitioning with variable client sizes
 
-Notes
+##Notes
 Results include both the embedding performance metrics and the log output for traceability.
 
 Code is modular and easily extendable to new datasets or embedding backends.
