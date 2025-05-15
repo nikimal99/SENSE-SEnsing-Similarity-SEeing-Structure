@@ -6,25 +6,47 @@
 
 ## 📦 Setup
 
-Clone the repository and install the required dependencies:
+Clone the repository and install the required dependencies, Using conda:
+
 
 ```bash
-git clone https://github.com/your-username/sense-framework.git
-cd sense-framework
-pip install -r requirements.txt
+conda env create -f environment.yml
+conda activate sense-env
+
+## 📁 Repository Structure
 
 sense-framework/
 │
-├── create_dataset_sense.py      # Dataset preprocessing and client splitting (IID, Non-IID Balanced/Unbalanced)
-├── Pointwise_full.py      # SENSE in Pointwise Full configuration
-├── Multisite_Full.py      # SENSE in Multisite Full configuration
-├── Multisite_Partial.py   # SENSE in Multisite Partial configuration
-├── bash_sense.sh                # Bash script to launch specific SENSE configurations
-└── requirements.txt             # Python dependencies
+├── create_dataset_sense.py # Dataset preprocessing and Dirichlet partitioning
+├── Pointwise_Full.py # SENSE configuration: Pointwise Full
+├── Multisite_Full.py # SENSE configuration: Multisite Full
+├── Multisite_Partial.py # SENSE configuration: Multisite Partial
+├── bash_sense.sh # Master script to run all experiments
+├── README.md # Project overview and usage
+└── environment.yml # Conda environment with dependencies
 
+SENSE Configurations
+Each .py file represents a distinct decentralized setting:
 
-## To execute the full pipeline for any SENSE configuration, run:
+Pointwise_Full.py: Full access to global anchors by all clients
+
+Multisite_Full.py: Each site has full local anchors; no inter-client knowledge
+
+Multisite_Partial.py: Partial overlap of anchors between clients
+
+## Running the Full Pipeline
+To run all configurations across multiple datasets and partition settings, use the bash script:
 ./bash_sense.sh
+
+The script:
+
+Iterates over all datasets, applies IID, Balanced, and Unbalanced partitioning, runs all SENSE configurations and saves results in a structured directory:
+results/<dataset>/<partition_type>/<config>/output.txt
+
+Example output path:
+results/RetinaMNIST/balanced/pointwise_full/output.txt
+
+You can modify bash_sense.sh to include or exclude specific datasets or configurations.
 
 Dataset Preparation
 The script create_dataset_sense.py prepares the dataset and splits it across clients:
@@ -34,3 +56,10 @@ IID: Uniform random splitting
 Non-IID Balanced: Dirichlet partitioning with balanced client sizes
 
 Non-IID Unbalanced: Dirichlet partitioning with variable client sizes
+
+Notes
+Results include both the embedding performance metrics and the log output for traceability.
+
+Code is modular and easily extendable to new datasets or embedding backends.
+
+Works with image datasets (MNIST, fashionmnist), medical image datasets (e.g., MedMNIST) and tabular datasets (e.g., German Credit).
