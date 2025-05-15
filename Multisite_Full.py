@@ -502,20 +502,6 @@ def log_message(message, log_file):
         f.write(str(message) + '\n')
     print(message)    
 
-def extract_resnet_features(images_np):
-    # Handle flattened inputs like (N, 2352), (N, 3072), etc.
-    if images_np.ndim == 2:
-        n_samples = images_np.shape[0]
-        dim = images_np.shape[1]
-        if dim == 3072:  # CIFAR-10
-            images_np = images_np.reshape(n_samples, 3, 32, 32)
-        elif dim == 2352:  # MedMNIST (e.g., 28x28x3)
-            images_np = images_np.reshape(n_samples, 3, 28, 28)
-        elif dim == 784:
-            images_np = images_np.reshape(n_samples, 1, 28, 28)
-        else:
-            raise ValueError(f"Unrecognized image dimension: {dim}")
-
 
 
     
