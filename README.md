@@ -12,7 +12,7 @@ Clone the repository and install the required dependencies, using conda:
 ```bash
 conda env create -f environment.yml
 conda activate sense-env
-```
+
 
 ## 📁 Repository Structure
 
@@ -26,6 +26,7 @@ SENSE: SEnsing Similarity, SEeing Structure/
 ├── README.md # Project overview and usage
 └── environment.yml # Conda environment with dependencies
 
+```
 ##SENSE Configurations
 Each .py file represents a distinct decentralized setting.
 
