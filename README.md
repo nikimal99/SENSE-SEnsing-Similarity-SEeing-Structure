@@ -27,7 +27,7 @@ SENSE: SEnsing Similarity, SEeing Structure/
 └── environment.yml # Conda environment with dependencies
 
 ```
-##SENSE Configurations
+## SENSE Configurations
 Each .py file represents a distinct decentralized setting.
 
 ## Running the Full Pipeline
@@ -42,7 +42,7 @@ results/RetinaMNIST/balanced/pointwise_full/output.txt
 
 You can modify bash_sense.sh to include or exclude specific datasets or configurations.
 
-##Dataset Preparation
+## Dataset Preparation
 The script create_dataset_sense.py prepares the dataset and splits it across clients:
 
 IID: Uniform random splitting
@@ -51,9 +51,13 @@ Non-IID Balanced: Dirichlet partitioning with balanced client sizes
 
 Non-IID Unbalanced: Dirichlet partitioning with variable client sizes
 
-##Notes
+## Notes
 Results include both the embedding performance metrics and the log output for traceability.
 
 Code is modular and easily extendable to new datasets or embedding backends.
 
 Works with image datasets (MNIST, fashionmnist), medical image datasets (e.g., MedMNIST) and tabular datasets (e.g., German Credit).
+
+## System Specifications
+
+All experiments are conducted on a server equipped with two NVIDIA RTX A6000 GPUs (48 GB memory each) and an Intel Xeon Platinum 8360Y CPU with 1 TB RAM.
